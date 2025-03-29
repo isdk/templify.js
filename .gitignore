@@ -19,6 +19,8 @@ dev.md
 .npmrc
 .tmp
 test/fixtures/test-dir/*.pack
+oclif.manifest.json
+*.tsbuildinfo
 
 # Editor directories and files
 .vscode/*
