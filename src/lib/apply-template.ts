@@ -26,8 +26,12 @@ export async function applyTemplate(templateDir: string, options: TemplateConfig
       const template = await readFile(filePath, 'utf8')
       const content = await StringTemplate.formatIf({template, data, templateFormat})
       if (content && content !== template) {
-        if (!options.dryRun) {await writeFile(filePath, content, 'utf8')}
-        console.log(`apply template: ${filePath} done`)
+        if (!options.dryRun) {
+          await writeFile(filePath, content, 'utf8')
+          console.log(`apply template: ${filePath} saved.`)
+        } else {
+          console.log(`apply template: ${filePath} done.`)
+        }
       } else {
         console.log(`apply template: ${filePath} no change`)
       }
