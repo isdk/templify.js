@@ -1,3 +1,5 @@
+import path from "path";
+import { existsSync } from "fs";
 import {
   inputPrompt,
   selectPrompt,
@@ -9,14 +11,10 @@ import {
   endPrompt,
 } from "@reliverse/prompts";
 import type { PromptOptions } from "@reliverse/prompts";
+
 import { InputEnumOptionItem } from "./input-type.js";
-import packageJson from "../../package.json" with { type: "json" };
-import path from "path";
-import { existsSync } from "fs";
 import { loadConfigFile, saveConfigFile } from "./template-config.js";
-
-const pkg = packageJson;
-
+import pkg from "../../package.json" with { type: "json" };
 
 type PreventWrongTerminalSizeOptions = {
   isDev?: boolean;
@@ -145,114 +143,26 @@ function generateDefaultDataFromSchema(schema: InputSchema, result: any = {}) {
 
 async function getDataFromInput(schema: InputSchema, options?: Partial<ProcessSchemaOptions>): Promise<any> {
   if (schema.enum) {
-    const isSingleSelect = (schema.minPick == null && schema.maxPick == null) || (schema.minPick === 1 && schema.maxPick === 1);
-    const config: any = {
-      ...options,
-      title: schema.title || options?.title || schema.name,
-      content: schema.description || options?.description,
-      options: schema.enum.map(valueInfo => {
-        if (typeof valueInfo !== 'object') {
-          valueInfo = {
-            value: valueInfo,
-            title: String(valueInfo),
-          }
-        }
-        if (!valueInfo.description) {valueInfo.description = valueInfo.value === schema.default ? 'Default' : undefined}
-        return ({
-        label: valueInfo.title || String(valueInfo.value),
-        value: valueInfo.value,
-        hint: valueInfo.description,
-        })
-      }),
-    }
-
-    if (isSingleSelect) {
-      config.defaultValue = schema.default;
-      const selected = await selectPrompt(config);
-      return selected;
-    }
-
-    const defaultValue = Array.isArray(schema.default) ? schema.default : schema.default != null ? [schema.default] : undefined;
-    const selected = await multiselectPrompt({
-      ...config,
-      defaultValue,
-      minSelect: schema.minPick,
-      maxSelect: schema.maxPick,
-    });
-    return schema.uniqueItems === false ? selected : [...new Set(selected)];
+    return await handleEnumPrompt(schema, options)
   }
-
-  const handleArray = async (schema: InputSchema) => {
-    const result: any[] = [];
-    const maxPick = schema.maxPick || NaN;
-    let i = 0;
-    while (i++ < maxPick) {
-      const value = await getDataFromInput({
-        ...schema.items || { type: 'string' },
-        title: `Add ${schema.items?.type}[${i}] to array (empty to finish)`
-      } as any, options);
-      if (value === undefined || value === "") break;
-      result.push(value);
-    }
-    return result;
-  };
-
-  const handleObject = async (schema: InputSchema) => {
-    const obj: Record<string, any> = {};
-    const config = {
-      ...extendedStartPromptConfig,
-      ...options,
-      title: schema.title || schema.name,
-    }
-    await startPrompt(config);
-    for (const [propName, propSchema] of Object.entries(schema.properties || {})) {
-      obj[propName] = await getDataFromInput({...propSchema, name: propName}, options);
-    }
-    await endPrompt(config);
-    return obj;
-  };
 
   try {
     switch (schema.type) {
       case 'string':
-        return await inputPrompt({
-          ...options,
-          title: schema.title || schema.name,
-          defaultValue: schema.default,
-          hint: schema.description
-        });
+        return await handleStringPrompt(schema, options);
 
       case 'number':
       case 'integer':
-        return (await numberPrompt({
-          ...options,
-          title: schema.title || schema.name,
-          defaultValue: schema.default,
-          validate: (value) => {
-            const num = Number(value);
-            if (isNaN(num)) return 'Invalid number';
-            if (schema.type === 'integer' && !Number.isInteger(num)) {
-              return 'Must be an integer';
-            }
-            if (schema.enum && !schema.enum.includes(num)) {
-              return `Must be one of: ${schema.enum.join(', ')}`;
-            }
-            return true;
-          }
-        }));
+        return await handleNumberPrompt(schema, options);
 
       case 'boolean':
-        return await confirmPrompt({
-          ...options,
-          title: schema.title || schema.name,
-          defaultValue: schema.default
-        });
+        return await handleBooleanPrompt(schema, options);
 
       case 'array':
-        return handleArray(schema);
+        return handleArrayPrompt(schema, options);
 
       case 'object':
-        return handleObject(schema);
+        return handleObject(schema, options);
 
       default:
         throw new Error(`Unsupported type: ${schema.type}`);
@@ -266,6 +176,110 @@ async function getDataFromInput(schema: InputSchema, options?: Partial<ProcessSc
     });
     return schema.default;
   }
+}
+
+async function handleObject(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
+  const obj: Record<string, any> = {};
+  const config = {
+    ...extendedStartPromptConfig,
+    ...options,
+    title: schema.title || schema.name,
+  }
+  await startPrompt(config);
+  for (const [propName, propSchema] of Object.entries(schema.properties || {})) {
+    obj[propName] = await getDataFromInput({...propSchema, name: propName}, options);
+  }
+  await endPrompt(config);
+  return obj;
+};
+
+async function handleArrayPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
+  const result: any[] = [];
+  const maxPick = schema.maxPick || NaN;
+  let i = 0;
+  while (i++ < maxPick) {
+    const value = await getDataFromInput({
+      ...schema.items || { type: 'string' },
+      title: `Add ${schema.items?.type}[${i}] to array (empty to finish)`
+    } as any, options);
+    if (value === undefined || value === "") break;
+    result.push(value);
+  }
+  return result;
+}
+
+async function handleStringPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
+  return await inputPrompt({
+    ...options,
+    title: schema.title || schema.name,
+    defaultValue: schema.default,
+    hint: schema.description
+  });
+}
+
+async function handleNumberPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
+  return await numberPrompt({
+    ...options,
+    title: schema.title || schema.name,
+    defaultValue: schema.default,
+    validate: (value) => {
+      const num = Number(value);
+      if (isNaN(num)) return 'Invalid number';
+      if (schema.type === 'integer' && !Number.isInteger(num)) {
+        return 'Must be an integer';
+      }
+      if (schema.enum && !schema.enum.includes(num)) {
+        return `Must be one of: ${schema.enum.join(', ')}`;
+      }
+      return true;
+    }
+  });
+}
+
+async function handleBooleanPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
+  return await confirmPrompt({
+    ...options,
+    title: schema.title || schema.name,
+    defaultValue: schema.default
+  });
+}
+
+async function handleEnumPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
+  const isSingleSelect = (schema.minPick == null && schema.maxPick == null) || (schema.minPick === 1 && schema.maxPick === 1);
+  const config: any = {
+    ...options,
+    title: schema.title || options?.title || schema.name,
+    content: schema.description || options?.description,
+    options: schema.enum!.map(valueInfo => {
+      if (typeof valueInfo !== 'object') {
+        valueInfo = {
+          value: valueInfo,
+          title: String(valueInfo),
+        }
+      }
+      if (!valueInfo.description) {valueInfo.description = valueInfo.value === schema.default ? 'Default' : undefined}
+      return ({
+      label: valueInfo.title || String(valueInfo.value),
+      value: valueInfo.value,
+      hint: valueInfo.description,
+      })
+    }),
+  }
+
+  if (isSingleSelect) {
+    config.defaultValue = schema.default;
+    const selected = await selectPrompt(config);
+    return selected;
+  }
+
+  const defaultValue = Array.isArray(schema.default) ? schema.default : schema.default != null ? [schema.default] : undefined;
+  const selected = await multiselectPrompt({
+    ...config,
+    defaultValue,
+    minSelect: schema.minPick,
+    maxSelect: schema.maxPick,
+  });
+  return schema.uniqueItems === false ? selected : [...new Set(selected)];
 }
 
 /*
