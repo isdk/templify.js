@@ -1,4 +1,4 @@
-import { readFile, rm, writeFile } from "fs/promises";
+import { readFile } from "fs/promises";
 import path from 'path';
 import { DefaultAllTextFiles, DefaultTemplifyConfigFileName, TemplateConfig, loadConfigFile, toTemplateFiles, saveConfigFile } from "./template-config.js";
 import { traverseFolder } from "./traverse-folder.js";
