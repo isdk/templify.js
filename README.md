@@ -15,11 +15,11 @@ Turn any project into a reusable template in seconds—keep your structure, repl
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g templify
+$ npm install -g @isdk/templify
 $ templify COMMAND
 running command...
 $ templify (--version)
-templify/0.1.0 linux-x64 node-v20.18.0
+@isdk/templify/0.1.0 linux-x64 node-v20.18.0
 $ templify --help [COMMAND]
 USAGE
   $ templify COMMAND
@@ -46,11 +46,11 @@ USAGE
 
 ## `templify TEMPLATE_DIR [DATA]`
 
-Apply template data configuration etc to the template folder directly.
+🚀 Apply template data configuration etc to the template folder directly.
 
 ```
 USAGE
-  $ templify  TEMPLATE_DIR [DATA] [-d <value>] [-i]
+  $ templify  TEMPLATE_DIR [DATA] [-d <value>] [-i] [-n]
 
 ARGUMENTS
   TEMPLATE_DIR  [default: .] the template folder to apply
@@ -59,9 +59,10 @@ ARGUMENTS
 FLAGS
   -d, --data=<value>      the data file to apply. see also DATA argument
   -i, --[no-]interactive  interactive mode
+  -n, --dryRun            dry run mode
 
 DESCRIPTION
-  Apply template data configuration etc to the template folder directly.
+  🚀 Apply template data configuration etc to the template folder directly.
 
 ALIASES
   $ templify 
@@ -73,11 +74,11 @@ EXAMPLES
 
 ## `templify apply TEMPLATE_DIR [DATA]`
 
-Apply template data configuration etc to the template folder directly.
+🚀 Apply template data configuration etc to the template folder directly.
 
 ```
 USAGE
-  $ templify apply TEMPLATE_DIR [DATA] [-d <value>] [-i]
+  $ templify apply TEMPLATE_DIR [DATA] [-d <value>] [-i] [-n]
 
 ARGUMENTS
   TEMPLATE_DIR  [default: .] the template folder to apply
@@ -86,9 +87,10 @@ ARGUMENTS
 FLAGS
   -d, --data=<value>      the data file to apply. see also DATA argument
   -i, --[no-]interactive  interactive mode
+  -n, --dryRun            dry run mode
 
 DESCRIPTION
-  Apply template data configuration etc to the template folder directly.
+  🚀 Apply template data configuration etc to the template folder directly.
 
 ALIASES
   $ templify 
@@ -412,17 +414,21 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ## `templify scan TEMPLATE_DIR`
 
-🔎 Scan the template folder and generate or update the template config file.
+🔎 Scan the template folder and generate or update the template config file(.templify.yaml).
 
 ```
 USAGE
-  $ templify scan TEMPLATE_DIR
+  $ templify scan TEMPLATE_DIR [-f <value>] [-n]
 
 ARGUMENTS
-  TEMPLATE_DIR  [default: .] the template folder to apply
+  TEMPLATE_DIR  [default: .] the template folder to scan
+
+FLAGS
+  -f, --files=<value>  the file patterns to scan, split by comma
+  -n, --dryRun         dry run mode
 
 DESCRIPTION
-  🔎 Scan the template folder and generate or update the template config file.
+  🔎 Scan the template folder and generate or update the template config file(.templify.yaml).
 
 EXAMPLES
   $ templify scan .

@@ -17,6 +17,7 @@
     "@oclif/plugin-plugins": "^5",
     "@reliverse/prompts": "^1.6.0",
     "custom-ability": "^2.0.1",
+    "isbinaryfile": "^5.0.4",
     "load-config-file": "2.0.0",
     "mime-type": "^5.0.2",
     "yaml": "^2.7.0"
