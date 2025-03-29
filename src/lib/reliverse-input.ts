@@ -187,26 +187,43 @@ async function handleObject(schema: InputSchema, options?: Partial<ProcessSchema
     title: schema.title || schema.name,
   }
   await startPrompt(config);
-  for (const [propName, propSchema] of Object.entries(schema.properties || {})) {
-    obj[propName] = await getDataFromInput({...propSchema, name: propName}, options);
+  try {
+    for (const [propName, propSchema] of Object.entries(schema.properties || {})) {
+      obj[propName] = await getDataFromInput({...propSchema, name: propName}, options);
+    }
+  } finally {
+    await endPrompt(config);
   }
-  await endPrompt(config);
   return obj;
 };
 
 async function handleArrayPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
   const result: any[] = [];
-  const maxPick = schema.maxPick || NaN;
+  const maxPick = schema.maxPick || Infinity;
   let i = 0;
-  while (i++ < maxPick) {
-    const value = await getDataFromInput({
-      ...schema.items || { type: 'string' },
-      title: `Add ${schema.items?.type}[${i}] to array (empty to finish)`
-    } as any, options);
-    if (value === undefined || value === "") break;
-    result.push(value);
+  const config = {
+    ...extendedStartPromptConfig,
+    ...options,
+    title: schema.title || schema.name,
   }
-  return result;
+  await startPrompt(config);
+  try {
+    while (i++ < maxPick) {
+      const itemType = schema.items as InputSchema || {};
+      if (!itemType.type) {
+        itemType.type = 'string';
+      }
+      const value = await getDataFromInput({
+        ...itemType,
+        title: `Add ${schema.name || itemType.type}[${i}] to array (empty to finish)`
+      } as any, options);
+      if (value === undefined || value === "") break;
+      result.push(value);
+    }
+    return result;
+  } finally {
+    await endPrompt(config);
+  }
 }
 
 async function handleStringPrompt(schema: InputSchema, options?: Partial<ProcessSchemaOptions>) {
