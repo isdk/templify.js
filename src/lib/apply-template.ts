@@ -30,6 +30,7 @@ export async function applyTemplate(templateDir: string, options: TemplateConfig
           await writeFile(filePath, content, 'utf8')
           console.log(`apply template: ${filePath} saved.`)
         } else {
+          // console.log(content)
           console.log(`apply template: ${filePath} done.`)
         }
       } else {
