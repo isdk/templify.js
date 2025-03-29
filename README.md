@@ -4,8 +4,8 @@ Templify: Instantly convert project into template
 Turn any project into a reusable template in seconds—keep your structure, replace variables smartly, and ship templates that just work.
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/templify.svg)](https://npmjs.org/package/templify)
-[![Downloads/week](https://img.shields.io/npm/dw/templify.svg)](https://npmjs.org/package/templify)
+[![Version](https://img.shields.io/npm/v/@isdk/templify.svg)](https://npmjs.org/package/@isdk/templify)
+[![Downloads/week](https://img.shields.io/npm/dw/@isdk/templify.svg)](https://npmjs.org/package/@isdk/templify)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -262,7 +262,7 @@ EXAMPLES
   $ templify plugins
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/index.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/index.ts)_
 
 ## `templify plugins add PLUGIN`
 
@@ -336,7 +336,7 @@ EXAMPLES
   $ templify plugins inspect myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/inspect.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/inspect.ts)_
 
 ## `templify plugins install PLUGIN`
 
@@ -385,7 +385,7 @@ EXAMPLES
     $ templify plugins install someuser/someplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/install.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/install.ts)_
 
 ## `templify plugins link PATH`
 
@@ -416,7 +416,7 @@ EXAMPLES
   $ templify plugins link myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/link.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/link.ts)_
 
 ## `templify plugins remove [PLUGIN]`
 
@@ -457,7 +457,7 @@ FLAGS
   --reinstall  Reinstall all plugins after uninstalling.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/reset.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/reset.ts)_
 
 ## `templify plugins uninstall [PLUGIN]`
 
@@ -485,7 +485,7 @@ EXAMPLES
   $ templify plugins uninstall myplugin
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/uninstall.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/uninstall.ts)_
 
 ## `templify plugins unlink [PLUGIN]`
 
@@ -529,7 +529,7 @@ DESCRIPTION
   Update installed plugins.
 ```
 
-_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.15/src/commands/plugins/update.ts)_
+_See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v5.4.36/src/commands/plugins/update.ts)_
 
 ## `templify scan TEMPLATE_DIR`
 
