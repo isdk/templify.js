@@ -13,6 +13,9 @@ Turn any project into a reusable template in seconds—keep your structure, repl
 <!-- tocstop -->
 
 # Usage
+
+## Install templify
+
 <!-- usage -->
 ```sh-session
 $ npm install -g @isdk/templify
@@ -26,6 +29,122 @@ USAGE
 ...
 ```
 <!-- usagestop -->
+
+## Turn project into template
+
+Navigate to your project directory and mark the parts of the relevant files that need to be replaced with template placeholders using `{{VAR}}`. Then, run the `templify scan` command to initialize the template variable file.
+Note: The default template format is a simplified version of `jinja2`.
+
+For example, modify the `package.json` file as follows:
+
+```js
+{
+  "name": "{{name}}",
+  "description": "{{description}}",
+  "version": "{{version}}",
+  "author": "{{author}}",
+  "bugs": "{{githubUrl}}/issues",
+  "homepage": "{{githubUrl}}",
+  "keywords": {{keywords | tojson}},
+  ...
+}
+```
+
+Run the templify scan command in the project directory:
+
+```bash
+templify scan
+found template file: package.json
+Scanned. found 1 template files
+Saved ./.templify.yaml
+```
+
+Open the generated `.templify.yaml` file and make some edits:
+
+```yaml
+files:
+  - package.json
+parameters:
+  name:
+    type: string
+    default: my-package-name
+    title: Package Name
+    description: Enter your project name
+  description:
+    type: string
+    title: Package Description
+    description: Enter your project description
+  version:
+    title: Package Version
+    type: string
+    default: 0.1.0
+  author:
+    type: string
+  githubUrl:
+    type: string
+    default: https://github.com
+  keywords:
+    type: array
+    description: Enter your project keywords
+```
+
+## Apply template data configuration to the template folder directly
+
+Ok, now you can run `templify apply` command to apply the template data configuration to the template folder directly:
+
+```bash
+templify apply
+╭─ Templify: Instantly convert project into template ──────────────────────────⊱
+│
+◆  Package Name
+│  Enter your project name
+│  my-name
+│
+◆  Package Description
+│  Enter your project description
+│  my-description
+│
+◆  Package Version
+│  0.1.0
+│
+◆  author
+│  Riceball LEE @snowyu
+│
+◆  githubUrl
+│  https://github.com
+│
+
+╭─ keywords ───────────────────────────────────────────────────────────────────⊱
+│
+◆  Add keywords[1] to array (empty to finish)
+│  good
+│
+◆  Add keywords[2] to array (empty to finish)
+│  better
+│
+◆  Add keywords[3] to array (empty to finish)
+│  best
+│
+◆  Add keywords[4] to array (empty to finish)
+│
+│
+│  keywords
+╰──────────────────────────────────────────────────────────────────────────────⊱
+
+│  Templify: Instantly convert project into template
+╰──────────────────────────────────────────────────────────────────────────────⊱
+
+skip: test/fixture/README.md
+apply template: test/fixture/package.json done.
+Appied. Enjoy your project at .
+```
+
+Note:
+
+* By default, the interactive mode is enabled.
+* Use the `--no-interactive` flag to disable interactive mode. If a `.templify-data.yaml` file exists in the template folder, it will apply the data from that file; otherwise, it will generate a `.templify-data.yaml` data file in the template folder.
+* Use the `-d your-data-file.yaml` flag to specify the data file to apply.
+
 # Commands
 
 <!-- commands -->
@@ -46,7 +165,7 @@ USAGE
 
 ## `templify TEMPLATE_DIR [DATA]`
 
-🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
+🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ```
 USAGE
@@ -62,7 +181,7 @@ FLAGS
   -n, --dryRun            dry run mode
 
 DESCRIPTION
-  🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
+  🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ALIASES
   $ templify 
@@ -74,7 +193,7 @@ EXAMPLES
 
 ## `templify apply TEMPLATE_DIR [DATA]`
 
-🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
+🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ```
 USAGE
@@ -90,7 +209,7 @@ FLAGS
   -n, --dryRun            dry run mode
 
 DESCRIPTION
-  🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
+  🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ALIASES
   $ templify 
