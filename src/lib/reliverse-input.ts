@@ -65,6 +65,7 @@ interface ProcessSchemaOptions {
   dataPath?: string;
   defaultDataFileName?: string;
   data?: any;
+  dryRun?: boolean;
 }
 
 export const basicStartPromptConfig = {
@@ -95,7 +96,7 @@ export async function getInputDataBySchema(schema: InputSchema, options: Process
       data = loadConfigFile(dataPath);
     } else {
       const _data = generateDefaultDataFromSchema(schema);
-      saveConfigFile(dataPath, _data);
+      if (!options.dryRun) {saveConfigFile(dataPath, _data);}
     }
 
   } else {
