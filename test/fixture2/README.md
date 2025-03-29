@@ -1,8 +1,10 @@
 ---
+title: "Templify: Instantly convert project into template"
 files:
-  - "**/package.json"
+  - "./package.json"
 parameters:
   name:
+    description: The name of the project.
     type: string
     default: my-name
   description:
