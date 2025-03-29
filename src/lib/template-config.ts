@@ -16,6 +16,13 @@ ConfigFile.register(['.json'], parseJson)
 
 export { ConfigFile }
 
+export const DefaultAllTextFiles = [
+  '**/*.((j|t)s?(x)|m(j|t)s)?(x)',
+  '**/*.(md|markdown|txt|?(x)htm?(l)|yaml|yml|xml|json|bat|sh|bash|zsh|ini|css|scss|less|sass|py|rb|php|go|java|c|cpp|h|hpp|hxx|rust|zig)',
+]
+export const DefaultTemplifyConfigFileName = '.templify.yaml'
+export const DefaultDataFileName = 'templify-data'
+
 export interface TemplateFiles {
   include?: string[]
   exclude?: string[]
@@ -34,6 +41,7 @@ export interface TemplateConfig {
   parameters?: Record<string, TemplateParameterItem>
   clean?: string[]
   templateFormat?: string
+  dryRun?: boolean
 }
 
 export function saveConfigFile(filename: string, config: any, extLevel = 1) {
@@ -75,4 +83,25 @@ export function loadConfigFile(filename: string, {extLevel = 1, externalFile}: {
     }
   }
   return result
+}
+
+export function toTemplateFiles(files: string[]|TemplateFiles) {
+  if (!Array.isArray(files)) {
+    const include = files.include || []
+    const exclude = files.exclude || []
+    if (include.length === 0) {
+      include.push(...DefaultAllTextFiles)
+    }
+    files = [...include]
+    for (const file of exclude) {
+      files.push(`!${file}`)
+    }
+  } else {
+    files = [...files]
+  }
+
+  if (files.length === 0) {
+    files.push(...DefaultAllTextFiles)
+  }
+  return files
 }
