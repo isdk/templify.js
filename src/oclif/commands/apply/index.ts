@@ -8,7 +8,7 @@ export default class ApplyCommand extends Command {
     template_dir: Args.directory({description: 'the template folder to apply', required: true, default: '.'}),
     data: Args.string({description: 'the json data to apply. see also `--data data-file-path`'}),
   }
-  static description = '🚀 Apply template data configuration etc to the template folder directly.'
+  static description = '🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.'
   static examples = [
     `<%= config.bin %> <%= command.id %> .
 Appied. Enjoy your project at "."

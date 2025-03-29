@@ -46,7 +46,7 @@ USAGE
 
 ## `templify TEMPLATE_DIR [DATA]`
 
-🚀 Apply template data configuration etc to the template folder directly.
+🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
 
 ```
 USAGE
@@ -62,7 +62,7 @@ FLAGS
   -n, --dryRun            dry run mode
 
 DESCRIPTION
-  🚀 Apply template data configuration etc to the template folder directly.
+  🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
 
 ALIASES
   $ templify 
@@ -74,7 +74,7 @@ EXAMPLES
 
 ## `templify apply TEMPLATE_DIR [DATA]`
 
-🚀 Apply template data configuration etc to the template folder directly.
+🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
 
 ```
 USAGE
@@ -90,7 +90,7 @@ FLAGS
   -n, --dryRun            dry run mode
 
 DESCRIPTION
-  🚀 Apply template data configuration etc to the template folder directly.
+  🚀 Apply template data configuration etc to the template folder directly. This the default command to run.
 
 ALIASES
   $ templify 
@@ -414,7 +414,7 @@ _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/
 
 ## `templify scan TEMPLATE_DIR`
 
-🔎 Scan the template folder and generate or update the template config file(.templify.yaml).
+🔎 Scan the template folder and generate or update the template config file(".templify.yaml").
 
 ```
 USAGE
@@ -428,7 +428,7 @@ FLAGS
   -n, --dryRun         dry run mode
 
 DESCRIPTION
-  🔎 Scan the template folder and generate or update the template config file(.templify.yaml).
+  🔎 Scan the template folder and generate or update the template config file(".templify.yaml").
 
 EXAMPLES
   $ templify scan .

@@ -6,7 +6,7 @@ export default class ScanCommand extends Command {
   static args = {
     template_dir: Args.directory({description: 'the template folder to scan', required: true, default: '.'}),
   }
-  static description = `🔎 Scan the template folder and generate or update the template config file(${DefaultTemplifyConfigFileName}).`
+  static description = `🔎 Scan the template folder and generate or update the template config file("${DefaultTemplifyConfigFileName}").`
   static examples = [
     `<%= config.bin %> <%= command.id %> .
 Scanned.
