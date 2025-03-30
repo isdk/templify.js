@@ -1,6 +1,5 @@
 import {Args, Command, Flags} from '@oclif/core'
-import { DefaultTemplifyConfigFileName } from '../../../lib/template-config.js'
-import { scanTemplate } from '../../../lib/scan-template.js'
+import { DefaultTemplifyConfigFileName, scanTemplate } from '@isdk/templify-lib'
 
 export default class ScanCommand extends Command {
   static args = {

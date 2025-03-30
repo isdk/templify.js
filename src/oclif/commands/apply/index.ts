@@ -1,6 +1,6 @@
 import path from 'path'
 import {Args, Command, Flags} from '@oclif/core'
-import { applyTemplate, DefaultDataFileName, DefaultTemplifyConfigFileName, getInputDataBySchema, loadConfigFile } from '../../../lib/index.js'
+import { applyTemplate, DefaultDataFileName, DefaultTemplifyConfigFileName, getInputDataBySchema, loadConfigFile } from '@isdk/templify-lib'
 
 export default class ApplyCommand extends Command {
   static aliases = ['']

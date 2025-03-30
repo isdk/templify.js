@@ -22,7 +22,7 @@ $ npm install -g @isdk/templify
 $ templify COMMAND
 running command...
 $ templify (--version)
-@isdk/templify/0.2.0 linux-x64 node-v20.18.0
+@isdk/templify/0.2.1 linux-x64 node-v20.18.0
 $ templify --help [COMMAND]
 USAGE
   $ templify COMMAND
@@ -219,7 +219,7 @@ EXAMPLES
   Appied. Enjoy your project at "."
 ```
 
-_See code: [src/commands/apply/index.ts](https://github.com/isdk/templify.js/blob/v0.2.0/src/commands/apply/index.ts)_
+_See code: [src/commands/apply/index.ts](https://github.com/isdk/templify.js/blob/v0.2.1/src/commands/apply/index.ts)_
 
 ## `templify help [COMMAND]`
 
@@ -554,5 +554,5 @@ EXAMPLES
   Scanned.
 ```
 
-_See code: [src/commands/scan/index.ts](https://github.com/isdk/templify.js/blob/v0.2.0/src/commands/scan/index.ts)_
+_See code: [src/commands/scan/index.ts](https://github.com/isdk/templify.js/blob/v0.2.1/src/commands/scan/index.ts)_
 <!-- commandsstop -->
