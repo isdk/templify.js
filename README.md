@@ -152,26 +152,20 @@ Note:
 # Commands
 
 <!-- commands -->
-- [Templify: Instantly convert project into template](#templify-instantly-convert-project-into-template)
-- [Usage](#usage)
-  - [Install templify](#install-templify)
-  - [Turn project into template](#turn-project-into-template)
-  - [Apply template data configuration to the template folder directly](#apply-template-data-configuration-to-the-template-folder-directly)
-- [Commands](#commands)
-  - [`templify TEMPLATE_DIR [DATA]`](#templify-template_dir-data)
-  - [`templify apply TEMPLATE_DIR [DATA]`](#templify-apply-template_dir-data)
-  - [`templify help [COMMAND]`](#templify-help-command)
-  - [`templify plugins`](#templify-plugins)
-  - [`templify plugins add PLUGIN`](#templify-plugins-add-plugin)
-  - [`templify plugins:inspect PLUGIN...`](#templify-pluginsinspect-plugin)
-  - [`templify plugins install PLUGIN`](#templify-plugins-install-plugin)
-  - [`templify plugins link PATH`](#templify-plugins-link-path)
-  - [`templify plugins remove [PLUGIN]`](#templify-plugins-remove-plugin)
-  - [`templify plugins reset`](#templify-plugins-reset)
-  - [`templify plugins uninstall [PLUGIN]`](#templify-plugins-uninstall-plugin)
-  - [`templify plugins unlink [PLUGIN]`](#templify-plugins-unlink-plugin)
-  - [`templify plugins update`](#templify-plugins-update)
-  - [`templify scan TEMPLATE_DIR`](#templify-scan-template_dir)
+* [`templify TEMPLATE_DIR [DATA]`](#templify-template_dir-data)
+* [`templify apply TEMPLATE_DIR [DATA]`](#templify-apply-template_dir-data)
+* [`templify help [COMMAND]`](#templify-help-command)
+* [`templify plugins`](#templify-plugins)
+* [`templify plugins add PLUGIN`](#templify-plugins-add-plugin)
+* [`templify plugins:inspect PLUGIN...`](#templify-pluginsinspect-plugin)
+* [`templify plugins install PLUGIN`](#templify-plugins-install-plugin)
+* [`templify plugins link PATH`](#templify-plugins-link-path)
+* [`templify plugins remove [PLUGIN]`](#templify-plugins-remove-plugin)
+* [`templify plugins reset`](#templify-plugins-reset)
+* [`templify plugins uninstall [PLUGIN]`](#templify-plugins-uninstall-plugin)
+* [`templify plugins unlink [PLUGIN]`](#templify-plugins-unlink-plugin)
+* [`templify plugins update`](#templify-plugins-update)
+* [`templify scan TEMPLATE_DIR`](#templify-scan-template_dir)
 
 ## `templify TEMPLATE_DIR [DATA]`
 
@@ -194,7 +188,7 @@ DESCRIPTION
   🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ALIASES
-  $ templify
+  $ templify 
 
 EXAMPLES
   $ templify  .
@@ -222,7 +216,7 @@ DESCRIPTION
   🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ALIASES
-  $ templify
+  $ templify 
 
 EXAMPLES
   $ templify apply .
