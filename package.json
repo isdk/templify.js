@@ -66,9 +66,6 @@
     ],
     "topicSeparator": " ",
     "topics": {
-      "run": {
-        "description": "Say hello to the world and others"
-      }
     }
   },
   "repository": "isdk/templify.js",
