@@ -154,6 +154,7 @@ Note:
 <!-- commands -->
 * [`templify TEMPLATE_DIR [DATA]`](#templify-template_dir-data)
 * [`templify apply TEMPLATE_DIR [DATA]`](#templify-apply-template_dir-data)
+* [`templify autocomplete [SHELL]`](#templify-autocomplete-shell)
 * [`templify help [COMMAND]`](#templify-help-command)
 * [`templify plugins`](#templify-plugins)
 * [`templify plugins add PLUGIN`](#templify-plugins-add-plugin)
@@ -166,6 +167,7 @@ Note:
 * [`templify plugins unlink [PLUGIN]`](#templify-plugins-unlink-plugin)
 * [`templify plugins update`](#templify-plugins-update)
 * [`templify scan TEMPLATE_DIR`](#templify-scan-template_dir)
+* [`templify version`](#templify-version)
 
 ## `templify TEMPLATE_DIR [DATA]`
 
@@ -224,6 +226,37 @@ EXAMPLES
 ```
 
 _See code: [src/commands/apply/index.ts](https://github.com/isdk/templify.js/blob/v0.3.3/src/commands/apply/index.ts)_
+
+## `templify autocomplete [SHELL]`
+
+Display autocomplete installation instructions.
+
+```
+USAGE
+  $ templify autocomplete [SHELL] [-r]
+
+ARGUMENTS
+  SHELL  (zsh|bash|powershell) Shell type
+
+FLAGS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+  Display autocomplete installation instructions.
+
+EXAMPLES
+  $ templify autocomplete
+
+  $ templify autocomplete bash
+
+  $ templify autocomplete zsh
+
+  $ templify autocomplete powershell
+
+  $ templify autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v3.2.26/src/commands/autocomplete/index.ts)_
 
 ## `templify help [COMMAND]`
 
@@ -559,4 +592,24 @@ EXAMPLES
 ```
 
 _See code: [src/commands/scan/index.ts](https://github.com/isdk/templify.js/blob/v0.3.3/src/commands/scan/index.ts)_
+
+## `templify version`
+
+```
+USAGE
+  $ templify version [--json] [--verbose]
+
+FLAGS
+  --verbose  Show additional information about the CLI.
+
+GLOBAL FLAGS
+  --json  Format output as json.
+
+FLAG DESCRIPTIONS
+  --verbose  Show additional information about the CLI.
+
+    Additionally shows the architecture, node version, operating system, and versions of plugins that the CLI is using.
+```
+
+_See code: [@oclif/plugin-version](https://github.com/oclif/plugin-version/blob/v2.2.27/src/commands/version.ts)_
 <!-- commandsstop -->
