@@ -22,7 +22,7 @@ $ npm install -g @isdk/templify
 $ templify COMMAND
 running command...
 $ templify (--version)
-@isdk/templify/0.3.1 linux-x64 node-v20.18.0
+@isdk/templify/0.3.2 linux-x64 node-v20.18.0
 $ templify --help [COMMAND]
 USAGE
   $ templify COMMAND
@@ -33,7 +33,6 @@ USAGE
 ## Turn project into template
 
 Navigate to your project directory and mark the parts of the relevant files that need to be replaced with template placeholders using `{{VAR}}`. Then, run the `templify scan` command to initialize the template variable file.
-Note: The default template format is a simplified version of `jinja2`.
 
 For example, modify the `package.json` file as follows:
 
@@ -87,6 +86,11 @@ parameters:
     type: array
     description: Enter your project keywords
 ```
+
+Note:
+
+* The default template format is a simplified version of `jinja2`.
+* The files or folders in the `.gitignore` will be ignored.
 
 ## Apply template data configuration to the template folder directly
 
@@ -148,20 +152,26 @@ Note:
 # Commands
 
 <!-- commands -->
-* [`templify TEMPLATE_DIR [DATA]`](#templify-template_dir-data)
-* [`templify apply TEMPLATE_DIR [DATA]`](#templify-apply-template_dir-data)
-* [`templify help [COMMAND]`](#templify-help-command)
-* [`templify plugins`](#templify-plugins)
-* [`templify plugins add PLUGIN`](#templify-plugins-add-plugin)
-* [`templify plugins:inspect PLUGIN...`](#templify-pluginsinspect-plugin)
-* [`templify plugins install PLUGIN`](#templify-plugins-install-plugin)
-* [`templify plugins link PATH`](#templify-plugins-link-path)
-* [`templify plugins remove [PLUGIN]`](#templify-plugins-remove-plugin)
-* [`templify plugins reset`](#templify-plugins-reset)
-* [`templify plugins uninstall [PLUGIN]`](#templify-plugins-uninstall-plugin)
-* [`templify plugins unlink [PLUGIN]`](#templify-plugins-unlink-plugin)
-* [`templify plugins update`](#templify-plugins-update)
-* [`templify scan TEMPLATE_DIR`](#templify-scan-template_dir)
+- [Templify: Instantly convert project into template](#templify-instantly-convert-project-into-template)
+- [Usage](#usage)
+  - [Install templify](#install-templify)
+  - [Turn project into template](#turn-project-into-template)
+  - [Apply template data configuration to the template folder directly](#apply-template-data-configuration-to-the-template-folder-directly)
+- [Commands](#commands)
+  - [`templify TEMPLATE_DIR [DATA]`](#templify-template_dir-data)
+  - [`templify apply TEMPLATE_DIR [DATA]`](#templify-apply-template_dir-data)
+  - [`templify help [COMMAND]`](#templify-help-command)
+  - [`templify plugins`](#templify-plugins)
+  - [`templify plugins add PLUGIN`](#templify-plugins-add-plugin)
+  - [`templify plugins:inspect PLUGIN...`](#templify-pluginsinspect-plugin)
+  - [`templify plugins install PLUGIN`](#templify-plugins-install-plugin)
+  - [`templify plugins link PATH`](#templify-plugins-link-path)
+  - [`templify plugins remove [PLUGIN]`](#templify-plugins-remove-plugin)
+  - [`templify plugins reset`](#templify-plugins-reset)
+  - [`templify plugins uninstall [PLUGIN]`](#templify-plugins-uninstall-plugin)
+  - [`templify plugins unlink [PLUGIN]`](#templify-plugins-unlink-plugin)
+  - [`templify plugins update`](#templify-plugins-update)
+  - [`templify scan TEMPLATE_DIR`](#templify-scan-template_dir)
 
 ## `templify TEMPLATE_DIR [DATA]`
 
@@ -184,7 +194,7 @@ DESCRIPTION
   🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ALIASES
-  $ templify 
+  $ templify
 
 EXAMPLES
   $ templify  .
@@ -212,14 +222,14 @@ DESCRIPTION
   🚀 Apply template data configuration etc to the template folder directly. This is the default command to run.
 
 ALIASES
-  $ templify 
+  $ templify
 
 EXAMPLES
   $ templify apply .
   Appied. Enjoy your project at "."
 ```
 
-_See code: [src/commands/apply/index.ts](https://github.com/isdk/templify.js/blob/v0.3.1/src/commands/apply/index.ts)_
+_See code: [src/commands/apply/index.ts](https://github.com/isdk/templify.js/blob/v0.3.2/src/commands/apply/index.ts)_
 
 ## `templify help [COMMAND]`
 
@@ -554,5 +564,5 @@ EXAMPLES
   Scanned.
 ```
 
-_See code: [src/commands/scan/index.ts](https://github.com/isdk/templify.js/blob/v0.3.1/src/commands/scan/index.ts)_
+_See code: [src/commands/scan/index.ts](https://github.com/isdk/templify.js/blob/v0.3.2/src/commands/scan/index.ts)_
 <!-- commandsstop -->
