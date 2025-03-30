@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.0](https://github.com/isdk/templify.js/compare/v0.2.1...v0.3.0) (2025-03-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* extract common to templify-lib
+
+### Refactor
+
+* extract common to templify-lib ([e730b59](https://github.com/isdk/templify.js/commit/e730b59a042a52b1d6b7fbc90a1fa9c87b24b449))
+
 ## [0.2.1](https://github.com/isdk/templify.js/compare/v0.2.0...v0.2.1) (2025-03-29)
 
 ## 0.2.0 (2025-03-29)
