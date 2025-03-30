@@ -1,7 +1,7 @@
 {
   "name": "@isdk/templify",
   "description": "🚀 Instantly convert projects into template.",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "author": "Riceball LEE @snowyu",
   "bin": {
     "templify": "./bin/run.js"
