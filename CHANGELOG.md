@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.2](https://github.com/isdk/templify.js/compare/v0.3.1...v0.3.2) (2025-03-30)
+
+
+### Bug Fixes
+
+* can not scan sub-folders ([d08d0a7](https://github.com/isdk/templify.js/commit/d08d0a7d4aa12d60e6db9cca5453ae4bc08002e5))
+
 ## [0.3.1](https://github.com/isdk/templify.js/compare/v0.3.0...v0.3.1) (2025-03-30)
 
 
