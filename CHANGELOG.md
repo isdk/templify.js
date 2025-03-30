@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.1](https://github.com/isdk/templify.js/compare/v0.3.0...v0.3.1) (2025-03-30)
+
+
+### Bug Fixes
+
+* can not pass data argument by default ([4ade344](https://github.com/isdk/templify.js/commit/4ade344748d5b66ac72e39cae0d4733ee0c8c5b6))
+
 ## [0.3.0](https://github.com/isdk/templify.js/compare/v0.2.1...v0.3.0) (2025-03-30)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "@isdk/templify",
   "description": "🚀 Instantly convert projects into template.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Riceball LEE @snowyu",
   "bin": {
     "templify": "./bin/run.js"
@@ -65,8 +65,7 @@
       "@oclif/plugin-plugins"
     ],
     "topicSeparator": " ",
-    "topics": {
-    }
+    "topics": {}
   },
   "repository": "isdk/templify.js",
   "scripts": {
