@@ -9,7 +9,7 @@
   "bugs": "https://github.com/isdk/templify.js/issues",
   "dependencies": {
     "@isdk/artistic-text": "^0.1.1",
-    "@isdk/templify-lib": "^0.3.6",
+    "@isdk/templify-lib": "^0.4.0",
     "@oclif/core": "^4",
     "@oclif/plugin-autocomplete": "^3.2.26",
     "@oclif/plugin-help": "^6",
