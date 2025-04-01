@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.5.0](https://github.com/isdk/templify.js/compare/v0.4.0...v0.5.0) (2025-04-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* add Directory names and file names to replace variable
+
+### Features
+
+* add Directory names and file names to replace variable ([83839c4](https://github.com/isdk/templify.js/commit/83839c4267fd6cee8cdc27b774e1a5c19598930b))
+
 ## [0.4.0](https://github.com/isdk/templify.js/compare/v0.3.7...v0.4.0) (2025-03-31)
 
 
