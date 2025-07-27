@@ -11,33 +11,33 @@
     "@isdk/artistic-text": "^0.1.1",
     "@isdk/templify-lib": "^0.5.0",
     "@oclif/core": "^4",
-    "@oclif/plugin-autocomplete": "^3.2.26",
+    "@oclif/plugin-autocomplete": "^3.2.34",
     "@oclif/plugin-help": "^6",
     "@oclif/plugin-plugins": "^5",
-    "@oclif/plugin-version": "^2.2.27",
+    "@oclif/plugin-version": "^2.2.32",
     "custom-ability": "^2.0.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1",
     "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.23.0",
+    "@eslint/js": "^9.32.0",
     "@oclif/prettier-config": "^0.2.1",
     "@oclif/test": "^4",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^18",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24",
     "chai": "^5",
     "eslint": "^9",
     "eslint-config-oclif": "^6",
     "eslint-config-prettier": "^10",
-    "oclif": "^4.17.41",
-    "shx": "^0.3.3",
-    "terser": "^5.39.0",
-    "tsup": "^8.4.0",
-    "tsx": "^4.19.3",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.28.0",
-    "vite": "^6.0.6",
-    "vitest": "^2.1.8"
+    "oclif": "^4.22.3",
+    "shx": "^0.4.0",
+    "terser": "^5.43.1",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0",
+    "vite": "^7.0.6",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -85,5 +85,12 @@
     "test": "FORCE_COLOR=1 vitest run",
     "version": "oclif readme && git add README.md"
   },
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "pnpm": {
+    "overrides": {
+      "brace-expansion@>=1.0.0 <=1.1.11": ">=1.1.12",
+      "brace-expansion@>=2.0.0 <=2.0.1": ">=2.0.2",
+      "@eslint/plugin-kit@<0.3.3": ">=0.3.3"
+    }
+  }
 }
