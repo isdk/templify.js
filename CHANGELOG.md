@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.5.1](https://github.com/isdk/templify.js/compare/v0.5.0...v0.5.1) (2025-08-03)
+
+
+### Bug Fixes
+
+* avoid recursive loop if apply command failed ([04a6f9f](https://github.com/isdk/templify.js/commit/04a6f9f6506b770926d97acf90d8e48707df946c))
+* save the default data to data file only when non-interactive mode ([f8ddfb4](https://github.com/isdk/templify.js/commit/f8ddfb467c9ab2fee1e126ee0e5384b34e823c54))
+
+
+### Refactor
+
+* disable warnings for ExperimentalWarning ([ce7f270](https://github.com/isdk/templify.js/commit/ce7f270c4e864139db80192307933041e2036b14))
+
 ## [0.5.0](https://github.com/isdk/templify.js/compare/v0.4.0...v0.5.0) (2025-04-01)
 
 
