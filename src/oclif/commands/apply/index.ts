@@ -1,6 +1,6 @@
 import path from 'path'
 import {Args, Command, Flags} from '@oclif/core'
-import { applyTemplate, DefaultDataFileName, DefaultTemplifyConfigFileName, getInputDataBySchema, loadConfigFile } from '@isdk/templify-lib'
+import { applyTemplate, DefaultDataFileName, DefaultTemplifyConfigFileName, getInputDataBySchema, IsDefaultTemplifyDataSymbol, loadConfigFile } from '@isdk/templify-lib'
 
 export default class ApplyCommand extends Command {
   static aliases = ['']
@@ -59,6 +59,10 @@ Appied. Enjoy your project at "."
       defaultDataFileName: DefaultDataFileName,
       dryRun,
     })
+    if (data[IsDefaultTemplifyDataSymbol]) {
+      this.log('save the default data into ' + dataPath)
+      if (!dryRun) {return}
+    }
 
     if (data) {
       await applyTemplate(rootDir, {...tempifyConfig, parameters: data, dryRun})
